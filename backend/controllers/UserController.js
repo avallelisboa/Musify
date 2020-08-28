@@ -113,7 +113,7 @@ api.put('/update-user/', Auth.verifyAuth, (req, res)=>{
     });
 });
 
-api.post('/upload-image', [Auth.verifyAuth, upload], (req, res)=>{
+api.post('/upload-user-image', [Auth.verifyAuth, upload], (req, res)=>{
     let userId = req.params.id;
 
     if(req.file){
@@ -146,7 +146,7 @@ api.post('/upload-image', [Auth.verifyAuth, upload], (req, res)=>{
     }
 });
 
-api.get('/get-image/:image-file', Auth.verifyAuth,(req, res)=>{
+api.get('/get-user-image/:imageFile', Auth.verifyAuth,(req, res)=>{
     let imageFile = req.params.imageFile;
     let pathFile = './uploads/users/' + imageFile;
 
