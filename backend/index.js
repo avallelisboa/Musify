@@ -12,13 +12,13 @@ const SongController = require('./controllers/SongController');
 const ArtistController = require('./controllers/ArtistController');
 const AlbumController = require('./controllers/AlbumController');
 
-mongoose.connect(mongourl)
+/*mongoose.connect(mongourl)
         .then(()=>{
             console.log("The database is working in" + mongourl);
         })
         .catch((error)=>{
             console.log(error);
-        });
+        });*/
 
 const app = express();
 
