@@ -8,6 +8,8 @@ const api = express.Router();
 const mongoosePaginate = require('mongoose-pagination');
 
 const Auth = require('../middlewares/authenticate');
+
+const multiparty = require('connect-multiparty');
 const upload = require({uploadDir: './uploads/artist'});
 
 const Artist = require('../models/Artist');
@@ -140,7 +142,7 @@ api.post('/upload-artist-image/:id',[Auth.verifyAuth, upload], (req, res)=>{
         let ext = extSplit[1];
 
         if(fileExt == "png" || fileExt == "jpg" || fileExt == "jpeg" || fileExt == "gif"){
-            User.findByIdAndUpdate(userId, {image: fileName},(error, userUpdated)=>{
+            user.findByIdAndUpdate(userId, {image: fileName},(error, userUpdated)=>{
                 if(error){
                     res.status(500).send(json({
                         message: "There was an error while updating the user"

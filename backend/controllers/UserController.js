@@ -90,8 +90,8 @@ api.post('/login', Auth.verifyAuth, (req,res)=>{
     });
 });
 
-api.put('/update-user/', Auth.verifyAuth, (req, res)=>{
-    let userId = req.sub;
+api.put('/update-user/:id', Auth.verifyAuth, (req, res)=>{
+    let userId = req.params.id;
     let update = req.body;
 
     if(!userId) res.status(200).send(json({
