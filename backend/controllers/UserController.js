@@ -135,6 +135,7 @@ api.post('/upload-user-image', [Auth.verifyAuth, upload], (req, res)=>{
                         message: "The user could not be updated"
                     }));
                 }else res.status(200).send(json({
+                    image: fileName,
                     user: userUpdated
                 }));
             });
