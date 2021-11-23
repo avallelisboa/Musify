@@ -1,0 +1,27 @@
+<form #registerForm="ngForm" (ngSubmit)="Register()">
+    <i class="far fa-window-close" (click)="CloseModal()"></i>
+    <legend>Register</legend>
+    <fieldset>
+        <label for="name">Name</label>
+        <input type="text" aria-label="Name" #name [(ngModel)]="user.name"  placeholder="Name" name="name" id="name">
+    </fieldset>
+    <fieldset>
+        <label for="lastname">Lastname</label>
+        <input type="text" aria-label="Lastname" #lastname [(ngModel)]="user.lastname" placeholder="Lastname" name="lastname"  id="lastname">
+    </fieldset>
+    <fieldset>
+        <label for="email">Email</label>
+        <input type="email" aria-label="Email" #email [(ngModel)]="user.email" placeholder="Email" name="email" id="email">
+    </fieldset>
+    <fieldset>
+        <label for="password">Password</label>
+        <input type="password" aria-label="Password" #password [(ngModel)]="user.password" placeholder="Password" name="password" id="password">
+    </fieldset>
+    <fieldset>
+        <label for="confirmpassword">Confirm Password</label>
+        <input type="password" aria-label="Confirm Password" placeholder="Confirm Password" name="confirmpassword" id="confirmpassword">
+    </fieldset>
+    <fieldset>
+        <input type="submit" value="Register">
+    </fieldset>
+</form>

@@ -1,0 +1,19 @@
+h1{
+    margin-bottom:30px;
+    text-align: center;
+    font-size: 70px;
+}
+main{
+    transform: translateY(20%);
+    margin: 0px;
+    width: 100%;
+    section{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    
+}

@@ -1,0 +1,19 @@
+<form #loginform="ngForm" (ngSubmit)="Login()">
+    <legend>Login</legend>
+    <fieldset>
+        <label for="email">Email</label>
+        <input placeholder="Email" aria-label="email" #email="ngModel" name="email" [(ngModel)]="user.email" type="email" id="emails" required>
+    </fieldset>
+    <fieldset>
+        <label for="password">Password</label>
+        <input placeholder="Password" aria-label="password" #password="ngModel" name="password" [(ngModel)]="user.password" type="password" id="password" required>
+    </fieldset>
+    <fieldset>
+        <input type="submit" value="Login">
+    </fieldset>
+    <fieldset>
+        <button type="button" (click)="ShouldShowRegistrationModal()">Register</button>
+    </fieldset>
+</form>
+<app-register (shouldCloseEvent)="shouldCloseEvent($event)" *ngIf="shouldShowRegistrationModal">
+</app-register>

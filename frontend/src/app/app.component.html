@@ -1,0 +1,13 @@
+<header *ngIf="user">
+  <app-navbar (logoutEvent)="logoutEvent($event)"></app-navbar>
+</header>
+<main>
+  <router-outlet *ngIf="user"></router-outlet>
+  <section *ngIf="!user">
+    <h1>Musify</h1>
+    <app-login (userEvent)="userEvent($event)" (tokenEvent)="tokenEvent($event)" (errorMessageEvent)="errorMessageEvent($event)"></app-login>
+    <article *ngIf="this.errorMessage != '' && this.errorMessage != null">
+      <p>{{this.errorMessage}}</p>
+    </article>
+</section>
+</main>
