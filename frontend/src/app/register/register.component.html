@@ -1,25 +1,60 @@
 <form #registerForm="ngForm" (ngSubmit)="Register()">
-    <i class="far fa-window-close" (click)="CloseModal()"></i>
+    <i class="bi bi-x" (click)="CloseModal()"></i>
     <legend>Register</legend>
     <fieldset>
         <label for="name">Name</label>
-        <input type="text" aria-label="Name" #name [(ngModel)]="user.name"  placeholder="Name" name="name" id="name">
+        <input type="text" aria-label="Name" #name="ngModel" [(ngModel)]="user.name"  placeholder="Name" name="name" id="name" required>
+    </fieldset>
+    <fieldset [hidden]="name.valid || !name.touched">
+        <p>
+            You must enter your name.
+        </p>
     </fieldset>
     <fieldset>
         <label for="lastname">Lastname</label>
-        <input type="text" aria-label="Lastname" #lastname [(ngModel)]="user.lastname" placeholder="Lastname" name="lastname"  id="lastname">
+        <input type="text" aria-label="Lastname" #lastname="ngModel" [(ngModel)]="user.lastname" placeholder="Lastname" name="lastname"  id="lastname" required>
+    </fieldset>
+    <fieldset [hidden]="lastname.valid || !lastname.touched">
+        <p>
+            You must enter your lastname.
+        </p>
     </fieldset>
     <fieldset>
         <label for="email">Email</label>
-        <input type="email" aria-label="Email" #email [(ngModel)]="user.email" placeholder="Email" name="email" id="email">
+        <input type="email" aria-label="Email" #email="ngModel" [(ngModel)]="user.email" placeholder="Email" name="email" id="email" required>
+    </fieldset>
+    <fieldset [hidden]="email.valid || !email.touched">
+        <p>
+            You must enter a valie email.
+        </p>
     </fieldset>
     <fieldset>
         <label for="password">Password</label>
-        <input type="password" aria-label="Password" #password [(ngModel)]="user.password" placeholder="Password" name="password" id="password">
+        <input type="password" aria-label="Password" minlength="6" maxlength="20" #password="ngModel" [(ngModel)]="user.password" placeholder="Password" name="password" id="password" required>
+    </fieldset>
+    <fieldset [hidden]="password.valid || !password.touched">
+        <p>
+            You must enter the password.
+        </p>
+    </fieldset>
+    <fieldset *ngIf="password.errors?.['minlength']">
+        <p>
+            The password must be at least 6 characters long.
+        </p>
+    </fieldset>
+    <fieldset *ngIf="password.errors?.['maxlength']">
+        <p>
+            The password has a maximun length of 20 characters.
+        </p>
     </fieldset>
     <fieldset>
         <label for="confirmpassword">Confirm Password</label>
-        <input type="password" aria-label="Confirm Password" placeholder="Confirm Password" name="confirmpassword" id="confirmpassword">
+        <input type="password" aria-label="Confirm Password" #confirmpassword="ngModel" [(ngModel)]="user.password" placeholder="Confirm Password" name="confirmpassword" id="confirmpassword" required>
+    </fieldset>
+    <fieldset *ngIf="password != confirmpassword && !confirmpassword.touched" >
+        <p>
+            You must enter the same password twice.
+        </p>
     </fieldset>
     <fieldset>
         <input type="submit" value="Register">

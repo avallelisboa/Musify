@@ -4,6 +4,7 @@ export default class UserRegister{
         public lastname:string,
         public username:string,
         public email:string,
-        public password:string
+        public password:string,
+        public confirmpassword:string
     ){}
 }

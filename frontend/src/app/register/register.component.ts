@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
 
   @Output() shouldCloseEvent = new EventEmitter<boolean>();
 
-  public user:UserRegister = new UserRegister('','','','','');
+  public user:UserRegister = new UserRegister('','','','','','');
   constructor(
     private _registerService:RegisterService
     ) { }

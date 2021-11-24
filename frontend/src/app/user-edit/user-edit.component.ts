@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import User from '../models/User';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -8,11 +9,19 @@ import { UserService } from '../services/user.service';
 })
 export class UserEditComponent implements OnInit {
 
+  public user:User = new User('','','','','','','');
   constructor(
     private _userService: UserService
-  ) { }
+  ) { 
+    let loc = localStorage.getItem("user");
+    let user:User;
+    if (loc) user = JSON.parse(loc) as User;
+  }
 
   ngOnInit(): void {
   }
+  
+  EditUser():void{
 
+  }
 }
