@@ -10,7 +10,7 @@ const mongoosePaginate = require('mongoose-pagination');
 const Auth = require('../middlewares/authenticate');
 
 const multiparty = require('connect-multiparty');
-const upload = require({uploadDir: './uploads/artist'});
+const upload = multiparty({uploadDir: './uploads/artist'});
 
 const Artist = require('../models/Artist');
 const Album = require('../models/Album');

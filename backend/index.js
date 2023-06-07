@@ -1,10 +1,11 @@
 'use strict'
 
+require('dotenv').config();
 const express = require('express');
-const expressport = process.env.port || 3977;
+const expressport = process.env.SERVERPORT;
 const bodyparser = require('body-parser');
 const mongoose = require('mongoose');
-const mongoport = 27017;
+const mongoport = process.env.MONGOPORT;
 const mongourl = 'mongodb://localhost:'+ mongoport + '/backend';
 
 const UserController = require('./controllers/UserController');
@@ -12,13 +13,7 @@ const SongController = require('./controllers/SongController');
 const ArtistController = require('./controllers/ArtistController');
 const AlbumController = require('./controllers/AlbumController');
 
-/*mongoose.connect(mongourl)
-        .then(()=>{
-            console.log("The database is working in" + mongourl);
-        })
-        .catch((error)=>{
-            console.log(error);
-        });*/
+
 
 const app = express();
 
@@ -39,12 +34,12 @@ app.use(SongController);
 app.use(ArtistController);
 app.use(AlbumController);
 
-new Promise(()=> app.listen(expressport))
-                    .then(()=>{
-                        console.log("the server is listening at " + expressport);
-                    })
-                    .catch((error)=>{
-                        console.log(error);
-                    });
+
+mongoose.connect(mongourl, (error)=>{
+    console.log(error);
+});
+app.listen(expressport,()=>{
+    console.log("the server is listening at " + expressport);
+});
 
 module.exports = app;

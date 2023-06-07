@@ -19,8 +19,17 @@ const createToken = (user)=>{
 
     return jwt.encode(payload, secret);
 };
+function decodeToken(token){
+    let payload = jwt.decode(token, secret);
+
+    if(payload.exp <= moment.unix())
+        return false;
+
+    return true;
+}
 
 module.exports = {
     secret,
-    createToken
+    createToken,
+    decodeToken
 }

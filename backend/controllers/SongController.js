@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt-nodejs');
 const Auth = require('../middlewares/authenticate');
 
 const multiparty = require('connect-multiparty');
-const upload = require({uploadDir: './uploads/song'});
+const upload = multiparty({uploadDir: './uploads/songs'});
 
 const path = require('path');
 const fs = require('fs');
